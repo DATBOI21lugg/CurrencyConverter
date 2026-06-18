@@ -1,5 +1,6 @@
 #include <iostream>
-#include<fstream>
+#include <fstream>
+#include <filesystem>
 
 
 using namespace std;
@@ -17,39 +18,56 @@ int main(){
     int baseValue;
     bool verified = false;
 
-    while(!verified){
-        getValues(baseCode, targetCode, baseValue);
-
-        if (baseValue < 0){
-            cout << "Please enter correct value to convert" << endl;
-        }
-        if (isValidCode(baseCode)){
-           cout << "Inavlid base currency code" << endl;
-        }
-        if (isValidCode(targetCode)){
-           cout << "Inavlid target currency code" << endl;
-        }
-    }
+    getValues(baseCode, targetCode, baseValue);
     
     cout << baseCode << " " << targetCode << " " << baseValue << endl;
 
-    //this runs in loops forever, fix the while loop broski
+   
 
 }
 
 void getValues(string& baseCode, string& targetCode, int& baseValue){
-    cout << "Enter your base currency code: ";
-    cin >> baseCode;
-    cout << endl << "Eneter Ammount: ";
-    cin >> baseValue;
-    cout << endl << "Enter currency to Conert to: ";
-    cin >> targetCode;
+    while (true) {
+        cout << "Enter Base Code: " << endl;
+        cin >> baseCode;
+        if (isValidCode(baseCode)){
+            break;
+        } else {
+            cout << "Invalid Code. Input again" << endl;
+        }
+    }
+    
+    while (true) {
+        cout << "Enter Target Code: ";
+        cin >> targetCode;
+        if (isValidCode(targetCode)){
+            break;
+        } else {
+            cout << "Invalid Code. Input again" << endl;
+        }
+    }
+
+    while (true) {
+        cout << "Enter Ammount: ";
+        cin >> baseValue;
+        if (baseValue > 0){
+            break;
+        } else {
+            cout << "Invalid Value. Input again" << endl;
+        }
+    }
 }
 
 
 bool isValidCode(const string& code){
-    ifstream file("ValidCurrencies.txt");
+    ifstream file("C:/Projects/Currency_Converter/ValidCurrencies.txt");
     string validCode;
+
+    if (!file.is_open()) {
+    cout << "File did not open." << endl;
+    cout << "Looking from: " << filesystem::current_path() << endl;
+    return false;
+}
 
     while(file >> validCode){
         if (code == validCode){
