@@ -1,13 +1,16 @@
-#ifndef _CURRENCYCONVERTER_H
-#define _CURRENCYCONVERTER_H
+#pragma once 
+#include "json.hpp";
+using json = nlohmann::json;
+
 
 class CurrencyConverter{
     private:
     public:
-
     
-
+    float calculate(json data);
 };
 
 
-#endif
+
+
+

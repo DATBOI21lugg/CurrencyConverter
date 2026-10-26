@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "vs-vcpkg",
+      "displayName": "Visual Studio with vcpkg",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    }
+  ]
+}

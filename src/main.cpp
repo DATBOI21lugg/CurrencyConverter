@@ -1,9 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <nlohmann/json.hpp>
 
 
 using namespace std;
+using json = nlohmann::json;
 
 bool isValidCode(const string& code);
 void getValues(string& baseCode, string& tragetCode, int& value);
@@ -12,17 +14,26 @@ void getValues(string& baseCode, string& tragetCode, int& value);
 
 
 int main(){
-    cout << "Welcome to the currency converter" << endl;
-    string baseCode;
-    string targetCode;
-    int baseValue;
-    bool verified = false;
 
-    getValues(baseCode, targetCode, baseValue);
-    
-    cout << baseCode << " " << targetCode << " " << baseValue << endl;
 
-   
+   // //create json object
+   // json data;
+  
+   // cout << "Welcome to the currency converter" << endl;
+   // string baseCode;
+   // string targetCode;
+   // int baseValue;
+   // bool verified = false;
+
+   // getValues(baseCode, targetCode, baseValue);
+   // 
+   // // cout << baseCode << " " << targetCode << " " << baseValue << endl;
+
+   //data["baseCode"] = baseCode;
+   //data["targetCode"] = targetCode;
+   //data["baseValue"] = baseValue;
+
+   //std::cout << data.dump(4) << '\n';
 
 }
 
